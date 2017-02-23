@@ -50,6 +50,6 @@ script:
 - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 
 deploy:
-  provider: partha
+  provider: releases
   api-key: partha@promact
   app-file: Path to the app file (APK/IPA)
