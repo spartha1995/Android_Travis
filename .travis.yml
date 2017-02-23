@@ -1,7 +1,6 @@
 language: android
 sudo: required
 jdk: oraclejdk8
-
 before_cache:
  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -55,3 +54,7 @@ before_script:
 
 script:
 - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
+deploy:
+  provider: partha
+  api-key: partha@promact
+  app-file: Path to the app file (APK/IPA)
