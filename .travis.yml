@@ -19,5 +19,7 @@ deploy:
     on:
     repo: Deepankar-promact/CalculatorApp
     tags: true
+    before_install:
+ - chmod +x gradlew
 script:
 - ./gradlew build
