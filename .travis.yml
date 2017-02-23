@@ -9,15 +9,21 @@ android:
   - extra-android-m2repository
 jdk:
 - oraclejdk8
-
 script:
 - "./gradlew build assembleRelease"
-
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-    - $HOME/.android/build-cache
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  - "$HOME/.android/build-cache"
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: 14KvNAX8dxsgdutmL+OhcnRFkWlbjHxsfxWZ8x0So9nPTxXRd5YCLxEB88zKKjppkoNOjhy6bNNgFLOScAlsDK0qGry84/Bq45FIVQc0cT+aiboFc52hDLgqSg0mAy1rPqTd+Cs1COzCYWfD6LuyAFMRck1ElnGkLriKCFAE4zpp/e5Rzepobr3rwDQdJTq5sZhmlu4kb2HvbsmI+woNr117VjfrRMmd8RXrzlzyfz0iqEixBU42QMgXUSaIVFg1Tx+YoqQxCf5VpZ9R6chDl52JB7wEvnI8zipk2zXOiLF5M9TIgnti5WDQWUHKEd9fWSvAOGU/Ve96xSXZ8IxJFQtVunGHXl1S3H3RrB2ieVkHJ7iuAfSu5JCa18qbU0jIt0Axlnr1Q1Sz04dWkR111ebeGmUnyUzb8d2AnbPVwq1MNrVWbyV/jKw2sgpAbAI3V+XpE4bcbFTc3ubXXyuDAM/FtkyexlIvAk0YOjtdeBQO2r7jZLR7mO0QbIBMltqO+aahW1FCz0TnXBFRLZFZU4mIzNniQQS8b6wybM7gkJsa3q7xjV/pVl+KLFA3GSf8eUT640zvopSmKE+iZFOkADUK8m6G636qZeukoy7Fjdhy0+15tAKXACtJsrkKiPYJ/I59mFxNfxDZJFSE+M/jmUUTEh5ODSbOu8YXBaFlGqE=
+  file: "./app/build/outputs/apk/app-release-unsigned.apk"
+  on:
+    repo: spartha1995/Android_Travis
